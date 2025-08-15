@@ -35,6 +35,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ChangeThemePage(),
       );
     },
+    DeliveryCompleteRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DeliveryCompleteScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -48,15 +54,25 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     OrderDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderDetailsRouteArgs>(
+          orElse: () => const OrderDetailsRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OrderDetailsPage(),
+        child: OrderDetailsPage(
+          key: args.key,
+          orderData: args.orderData,
+        ),
       );
     },
     OrderTrackMapRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderTrackMapRouteArgs>(
+          orElse: () => const OrderTrackMapRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OrderTrackMapPage(),
+        child: OrderTrackMapPage(
+          key: args.key,
+          orderData: args.orderData,
+        ),
       );
     },
     OrdersRoute.name: (routeData) {
@@ -144,6 +160,20 @@ class ChangeThemeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DeliveryCompleteScreen]
+class DeliveryCompleteRoute extends PageRouteInfo<void> {
+  const DeliveryCompleteRoute({List<PageRouteInfo>? children})
+      : super(
+          DeliveryCompleteRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DeliveryCompleteRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -173,30 +203,78 @@ class LoginRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [OrderDetailsPage]
-class OrderDetailsRoute extends PageRouteInfo<void> {
-  const OrderDetailsRoute({List<PageRouteInfo>? children})
-      : super(
+class OrderDetailsRoute extends PageRouteInfo<OrderDetailsRouteArgs> {
+  OrderDetailsRoute({
+    Key? key,
+    OrderModel? orderData,
+    List<PageRouteInfo>? children,
+  }) : super(
           OrderDetailsRoute.name,
+          args: OrderDetailsRouteArgs(
+            key: key,
+            orderData: orderData,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'OrderDetailsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<OrderDetailsRouteArgs> page =
+      PageInfo<OrderDetailsRouteArgs>(name);
+}
+
+class OrderDetailsRouteArgs {
+  const OrderDetailsRouteArgs({
+    this.key,
+    this.orderData,
+  });
+
+  final Key? key;
+
+  final OrderModel? orderData;
+
+  @override
+  String toString() {
+    return 'OrderDetailsRouteArgs{key: $key, orderData: $orderData}';
+  }
 }
 
 /// generated route for
 /// [OrderTrackMapPage]
-class OrderTrackMapRoute extends PageRouteInfo<void> {
-  const OrderTrackMapRoute({List<PageRouteInfo>? children})
-      : super(
+class OrderTrackMapRoute extends PageRouteInfo<OrderTrackMapRouteArgs> {
+  OrderTrackMapRoute({
+    Key? key,
+    OrderModel? orderData,
+    List<PageRouteInfo>? children,
+  }) : super(
           OrderTrackMapRoute.name,
+          args: OrderTrackMapRouteArgs(
+            key: key,
+            orderData: orderData,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'OrderTrackMapRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<OrderTrackMapRouteArgs> page =
+      PageInfo<OrderTrackMapRouteArgs>(name);
+}
+
+class OrderTrackMapRouteArgs {
+  const OrderTrackMapRouteArgs({
+    this.key,
+    this.orderData,
+  });
+
+  final Key? key;
+
+  final OrderModel? orderData;
+
+  @override
+  String toString() {
+    return 'OrderTrackMapRouteArgs{key: $key, orderData: $orderData}';
+  }
 }
 
 /// generated route for

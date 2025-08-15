@@ -1,9 +1,9 @@
-import 'package:flashquiz_app/core/models/category_response_model.dart';
+import 'package:flashquiz_app/core/models/order_model.dart';
 import 'package:flashquiz_app/features/auth/auth_wrapper.dart';
 import 'package:flashquiz_app/features/auth/login_page.dart';
 import 'package:flashquiz_app/features/bottom_nav/bottom_nav_page.dart';
-import 'package:flashquiz_app/core/gen/enums.dart';
 import 'package:flashquiz_app/features/home/home_page.dart';
+import 'package:flashquiz_app/features/order/delivery_success/delivery_success_page.dart';
 import 'package:flashquiz_app/features/order/order_detail/order_detail_page.dart';
 import 'package:flashquiz_app/features/order/order_page.dart';
 import 'package:flashquiz_app/features/order/order_track_map/order_track_map.dart';
@@ -25,6 +25,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: ChangeThemeRoute.page),
         AutoRoute(page: OrderDetailsRoute.page),
+        AutoRoute(page: OrderTrackMapRoute.page),
+        AutoRoute(page: DeliveryCompleteRoute.page),
         AutoRoute(initial: true, page: AuthWrapperRoute.page, children: [
           AutoRoute(page: HomeRoute.page),
           AutoRoute(page: OrdersRoute.page),

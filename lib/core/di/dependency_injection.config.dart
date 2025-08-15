@@ -15,7 +15,6 @@ import 'package:flashquiz_app/core/base/base_repository.dart' as _i699;
 import 'package:flashquiz_app/core/di/dependency_injection.dart' as _i275;
 import 'package:flashquiz_app/core/repository/category_repository.dart'
     as _i1018;
-import 'package:flashquiz_app/core/repository/quiz_repository.dart' as _i649;
 import 'package:flashquiz_app/core/router/app_router.dart' as _i156;
 import 'package:flashquiz_app/core/service/quiz_result_and_calculation/quiz_result_firebase_service.dart'
     as _i443;
@@ -24,6 +23,8 @@ import 'package:flashquiz_app/core/storage/data_sources/local_db_service.dart'
 import 'package:flashquiz_app/core/ui/theme/theme_cubit/theme_cubit.dart'
     as _i1050;
 import 'package:flashquiz_app/features/auth/cubit/auth_cubit.dart' as _i1034;
+import 'package:flashquiz_app/features/order/cubit/order_detail_cubit.dart'
+    as _i514;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -65,13 +66,13 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i909.LocalDatabaseService>(),
         ));
-    gh.lazySingleton<_i649.QuizRepository>(() => _i649.QuizRepository(
-          gh<_i361.Dio>(),
-          gh<_i909.LocalDatabaseService>(),
-        ));
     gh.singleton<_i699.BaseRepository>(() => _i699.BaseRepository(
           gh<_i361.Dio>(),
           gh<_i909.LocalDatabaseService>(),
+        ));
+    gh.factory<_i514.OrderDetailCubit>(() => _i514.OrderDetailCubit(
+          gh<_i1018.CategoryRepository>(),
+          gh<_i699.BaseRepository>(),
         ));
     gh.factory<_i1034.AuthCubit>(
         () => _i1034.AuthCubit(gh<_i699.BaseRepository>()));

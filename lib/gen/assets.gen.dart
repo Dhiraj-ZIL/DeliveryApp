@@ -12,6 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Subtract.svg
+  String get subtract => 'assets/images/Subtract.svg';
+
   /// File path: assets/images/order_image.jpg
   AssetGenImage get orderImage =>
       const AssetGenImage('assets/images/order_image.jpg');
@@ -20,13 +23,24 @@ class $AssetsImagesGen {
   AssetGenImage get person => const AssetGenImage('assets/images/person.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [orderImage, person];
+  List<dynamic> get values => [subtract, orderImage, person];
+}
+
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/order.json
+  String get order => 'assets/json/order.json';
+
+  /// List of all assets
+  List<String> get values => [order];
 }
 
 class Assets {
   const Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
 }
 
 class AssetGenImage {

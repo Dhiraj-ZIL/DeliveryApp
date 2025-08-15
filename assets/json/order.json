@@ -1,0 +1,44 @@
+{
+  "orderId": "1234567890",
+  "customerName": "Krishna Kunwar",
+  "customerContact": "+91 9876543210",
+  "orderDate": "2023-10-01",
+  "orderStatus": "Pending",
+  "totalAmount": 320,
+  "paymentStatus": "Paid",
+  "items": [
+    {
+      "itemName": "Tender Coconut (Normal)",
+      "quantity": 4,
+      "price": 80
+    },
+    {
+      "itemName": "Banana (Organic)",
+      "quantity": 6,
+      "price": 120
+    }
+  ],
+  "pickupLocation": {
+    "address": "Kathmandu Durbar Square, East\nKathmandu, 110009, Nepal",
+    "latitude": 27.7033,
+    "longitude": 85.3066,
+    "contact": "+91 9876543210",
+    "storeName": "Fresh Fruits Store",
+    "shortLocation": "Kathmandu Durbar Square"
+  },
+  "deliveryLocation": {
+    "address": "Patan Durbar Square, Patan\nKathmandu, 110002, Nepal",
+    "latitude": 27.671,
+    "longitude": 85.325,
+    "contact": "+91 9876543211",
+    "shortLocation": "Patan Durbar Square"
+  },
+  "deliveryPerson": {
+    "name": "Ravi Kumar",
+    "contact": "+91 9876543210",
+    "vehicle": "Bike"
+  },
+  "distanceOfPickup": "2.5",
+  "distanceOfDelivery": "3.0 ",
+  "estimatedDeliveryTime": "30 mins"
+}

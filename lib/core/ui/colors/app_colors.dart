@@ -37,7 +37,8 @@ class AppColors {
   static Color warningTextLight = HexColor("#F88105");
   // Brand colors
   static Color primary = HexColor("#CC0001");
-  static Color brandSecondary = HexColor("#34A853");
+  static Color brandSecondary = HexColor("#FD862A");
+  static Color brandGreen = HexColor("#36B37E");
   // Random colors
   static Color stepIndicator = HexColor("#FFE6DB");
   static Color boundaryColor = HexColor("#2AB4FE");

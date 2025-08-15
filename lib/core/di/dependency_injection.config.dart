@@ -25,7 +25,6 @@ import 'package:flashquiz_app/core/ui/theme/theme_cubit/theme_cubit.dart'
 import 'package:flashquiz_app/features/auth/cubit/auth_cubit.dart' as _i1034;
 import 'package:flashquiz_app/features/order/cubit/order_detail_cubit.dart'
     as _i514;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -43,26 +42,17 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     final firebaseModule = _$FirebaseModule();
     gh.singleton<_i361.Dio>(() => registerModule.dio);
-    gh.singleton<_i558.FlutterSecureStorage>(
-        () => registerModule.flutterSecureStorage);
-    gh.singleton<_i156.AppRouter>(() => _i156.AppRouter());
-    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
-    gh.lazySingleton<_i59.FirebaseAuth>(() => firebaseModule.auth);
     await gh.singletonAsync<_i909.LocalDatabaseService>(
       () {
-        final i = _i909.LocalDatabaseService(gh<_i558.FlutterSecureStorage>());
+        final i = _i909.LocalDatabaseService();
         return i.initialize().then((_) => i);
       },
       preResolve: true,
     );
-    gh.factory<_i1050.ThemeCubit>(
-        () => _i1050.ThemeCubit(gh<_i909.LocalDatabaseService>()));
-    gh.factory<_i443.QuizResultFirebaseService>(
-        () => _i443.QuizResultFirebaseService(
-              gh<_i974.FirebaseFirestore>(),
-              gh<_i59.FirebaseAuth>(),
-            ));
-    gh.lazySingleton<_i1018.CategoryRepository>(() => _i1018.CategoryRepository(
+    gh.singleton<_i156.AppRouter>(() => _i156.AppRouter());
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
+    gh.lazySingleton<_i59.FirebaseAuth>(() => firebaseModule.auth);
+    gh.lazySingleton<_i1018.OrderRepository>(() => _i1018.OrderRepository(
           gh<_i361.Dio>(),
           gh<_i909.LocalDatabaseService>(),
         ));
@@ -70,8 +60,15 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<_i909.LocalDatabaseService>(),
         ));
+    gh.factory<_i1050.ThemeCubit>(
+        () => _i1050.ThemeCubit(gh<_i909.LocalDatabaseService>()));
+    gh.factory<_i443.QuizResultFirebaseService>(
+        () => _i443.QuizResultFirebaseService(
+              gh<_i974.FirebaseFirestore>(),
+              gh<_i59.FirebaseAuth>(),
+            ));
     gh.factory<_i514.OrderDetailCubit>(() => _i514.OrderDetailCubit(
-          gh<_i1018.CategoryRepository>(),
+          gh<_i1018.OrderRepository>(),
           gh<_i699.BaseRepository>(),
         ));
     gh.factory<_i1034.AuthCubit>(

@@ -15,6 +15,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/Subtract.svg
   String get subtract => 'assets/images/Subtract.svg';
 
+  /// File path: assets/images/destination_person.png
+  AssetGenImage get destinationPerson =>
+      const AssetGenImage('assets/images/destination_person.png');
+
   /// File path: assets/images/order_image.jpg
   AssetGenImage get orderImage =>
       const AssetGenImage('assets/images/order_image.jpg');
@@ -23,7 +27,7 @@ class $AssetsImagesGen {
   AssetGenImage get person => const AssetGenImage('assets/images/person.jpg');
 
   /// List of all assets
-  List<dynamic> get values => [subtract, orderImage, person];
+  List<dynamic> get values => [subtract, destinationPerson, orderImage, person];
 }
 
 class $AssetsJsonGen {

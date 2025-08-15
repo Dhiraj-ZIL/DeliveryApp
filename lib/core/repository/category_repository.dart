@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class CategoryRepository extends BaseRepository {
-  CategoryRepository(super.dio, super.database);
+class OrderRepository extends BaseRepository {
+  OrderRepository(super.dio, super.database);
 
   Future<OrderModel>? getOrderData() async {
     String jsonString = await rootBundle.loadString('assets/json/order.json');

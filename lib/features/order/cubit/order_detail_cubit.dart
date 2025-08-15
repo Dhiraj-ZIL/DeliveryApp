@@ -6,15 +6,15 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class OrderDetailCubit extends BaseAsyncCubit<OrderModel> {
-  final CategoryRepository _categoryRepository;
+  final OrderRepository _OrderRepository;
 
-  OrderDetailCubit(this._categoryRepository, super.baseRepository) {
+  OrderDetailCubit(this._OrderRepository, super.baseRepository) {
     fetchOrderData();
   }
   Future<void> fetchOrderData() async {
     emitLoading();
     try {
-      final orderData = await _categoryRepository.getOrderData();
+      final orderData = await _OrderRepository.getOrderData();
       if (orderData != null) {
         emitSuccess(orderData);
       } else {

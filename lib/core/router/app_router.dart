@@ -27,15 +27,16 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: OrderDetailsRoute.page),
         AutoRoute(page: OrderTrackMapRoute.page),
         AutoRoute(page: DeliveryCompleteRoute.page),
-        AutoRoute(initial: true, page: AuthWrapperRoute.page, children: [
-          AutoRoute(page: HomeRoute.page),
-          AutoRoute(page: OrdersRoute.page),
-          AutoRoute(
-            page: ProfileRoute.page,
-          ),
-          AutoRoute(page: ShipmentRoute.page),
-        ]),
+        // AutoRoute(page: AuthWrapperRoute.page, children: [
+        //   AutoRoute(page: HomeRoute.page),
+        //   AutoRoute(page: OrdersRoute.page),
+        //   AutoRoute(
+        //     page: ProfileRoute.page,
+        //   ),
+        //   AutoRoute(page: ShipmentRoute.page),
+        // ]),
         AutoRoute(
+          initial: true,
           page: BottomNavRoute.page,
           children: [
             AutoRoute(

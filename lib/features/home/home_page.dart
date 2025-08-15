@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flashquiz_app/core/base/base_state.dart';
 import 'package:flashquiz_app/core/di/dependency_injection.dart';
+import 'package:flashquiz_app/core/extensions/build_context.dart';
 import 'package:flashquiz_app/core/models/order_model.dart';
 import 'package:flashquiz_app/core/router/app_router.dart';
 import 'package:flashquiz_app/core/ui/colors/app_colors.dart';
+import 'package:flashquiz_app/features/home/map_screen.dart';
 import 'package:flashquiz_app/features/order/cubit/order_detail_cubit.dart';
 import 'package:flashquiz_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -33,7 +36,17 @@ class _HomePageState extends State<HomePage> {
                 // MAP BACKGROUND (Placeholder)
                 Container(
                   color: Colors.grey[200],
-                  child: const Center(child: Text("Map Placeholder")),
+                  child: HomeMapPage(
+                    pickupLocation: LatLng(
+                      orderData?.pickupLocation.latitude ?? 27.7033,
+                      orderData?.pickupLocation.longitude ?? 85.3066,
+                    ),
+                    dropLocation: LatLng(
+                      orderData?.deliveryLocation.latitude ?? 27.7033,
+                      orderData?.deliveryLocation.longitude ?? 85.3066,
+                    ),
+                    isPolyLineNeeded: false,
+                  ),
                 ),
 
                 // ONLINE/OFFLINE TOGGLE
@@ -118,9 +131,7 @@ class _HomePageState extends State<HomePage> {
                             Spacer(),
                             InkWell(
                               onTap: () {
-                                context.router.push(OrderDetailsRoute(
-                                  orderData: orderData,
-                                ));
+                                context.showTopBanner("Under Development");
                               },
                               child: Icon(Icons.close,
                                   color: AppColors.primary, size: 28),
@@ -186,6 +197,8 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                     ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
                                   ),
                                   SizedBox(height: 4),
                                   Text(
@@ -194,6 +207,8 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 13,
                                       color: Colors.grey,
                                     ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
                                   ),
                                 ],
                               ),
@@ -219,6 +234,9 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                     ),
+                                    overflow: TextOverflow
+                                        .ellipsis, // Added this line
+                                    maxLines: 1, // Added this line
                                   ),
                                   SizedBox(height: 4),
                                   Text(
@@ -227,13 +245,15 @@ class _HomePageState extends State<HomePage> {
                                       fontSize: 13,
                                       color: Colors.grey,
                                     ),
+                                    overflow: TextOverflow
+                                        .ellipsis, // Added this line
+                                    maxLines: 1, // Added this line
                                   ),
                                 ],
                               ),
                             ),
                           ],
                         ),
-
                         const SizedBox(height: 18),
 
                         // BUTTON

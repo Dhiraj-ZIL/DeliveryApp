@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/core.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'dependency_injection.config.dart';
@@ -18,8 +18,8 @@ abstract class RegisterModule {
   @singleton
   Dio get dio => Dio();
 
-  @singleton
-  FlutterSecureStorage get flutterSecureStorage => const FlutterSecureStorage();
+  // @singleton
+  // FlutterSecureStorage get flutterSecureStorage => const FlutterSecureStorage();
 }
 
 @module

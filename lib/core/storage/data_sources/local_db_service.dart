@@ -1,14 +1,14 @@
 import 'package:flashquiz_app/core/models/app_settings_model.dart';
 import 'package:flashquiz_app/core/models/app_theme.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
 class LocalDatabaseService {
-  final FlutterSecureStorage _secureStorage;
+  // final FlutterSecureStorage _secureStorage;
 
-  LocalDatabaseService(this._secureStorage);
+  LocalDatabaseService();
 
   late Box<AppSettingsModel> _settingBox;
   late Box<AppThemeData> _appThemeStateBox;
@@ -48,9 +48,9 @@ class LocalDatabaseService {
     await _settingBox.close();
   }
 
-  Future<void> clearSecureStorage() async {
-    await _secureStorage.deleteAll();
-  }
+  // Future<void> clearSecureStorage() async {
+  //   await _secureStorage.deleteAll();
+  // }
 
   Future<void> setAppThemeStateValue(AppThemeData themeState) {
     return _appThemeStateBox.put("app_theme_state", themeState);

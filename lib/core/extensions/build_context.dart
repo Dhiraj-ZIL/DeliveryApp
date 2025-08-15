@@ -11,9 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flashquiz_app/core/extensions/build_context_ext_theme.dart';
 
 extension BuildContextX on BuildContext {
-  void showSnackBar(
-    String text,
-  ) {
+  void showSnackBar(String text, {Color? backgroundColor}) {
     ScaffoldMessenger.of(this).clearSnackBars();
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
@@ -30,23 +28,23 @@ extension BuildContextX on BuildContext {
         ),
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.sp)),
-        backgroundColor: subtext,
+        backgroundColor: backgroundColor ?? subtext,
         behavior: SnackBarBehavior.floating,
       ),
     );
   }
 
-  void showTopBanner(String text) {
+  void showTopBanner(String text, {Color? backgroundColor}) {
     final route = showFlushbar(
       context: this,
       flushbar: Flushbar(
         forwardAnimationCurve: Curves.decelerate,
         reverseAnimationCurve: Curves.easeOut,
-        backgroundColor: subtext,
+        backgroundColor: backgroundColor ?? subtext,
         flushbarStyle: FlushbarStyle.FLOATING,
         isDismissible: true,
         duration: const Duration(seconds: 3),
-        flushbarPosition: FlushbarPosition.TOP,
+        flushbarPosition: FlushbarPosition.BOTTOM,
         messageText: Text(
           text,
           maxLines: 3,

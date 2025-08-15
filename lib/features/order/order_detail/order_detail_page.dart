@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:dotted_line/dotted_line.dart';
+import 'package:flashquiz_app/core/extensions/build_context.dart';
 import 'package:flashquiz_app/core/models/order_model.dart';
 import 'package:flashquiz_app/core/router/app_router.dart';
 import 'package:flashquiz_app/core/ui/colors/app_colors.dart';
@@ -38,7 +39,8 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
 
         title: const Text(
           "Order Details",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.w500, fontSize: 16),
         ),
         centerTitle: false,
       ),
@@ -208,8 +210,8 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                     color: Colors.white,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: const Icon(Icons.location_on,
-                                      color: Colors.red, size: 20),
+                                  child: Icon(Icons.location_on,
+                                      color: AppColors.primary, size: 20),
                                 ),
                               ],
                             ),
@@ -305,6 +307,10 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {
+                    context.showSnackBar(
+                      "Order Rejected",
+                      backgroundColor: AppColors.primary,
+                    );
                     context.maybePop();
                   },
                   style: OutlinedButton.styleFrom(
@@ -335,7 +341,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: AppColors.primary,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),

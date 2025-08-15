@@ -36,7 +36,7 @@ class AppColors {
   static Color warningTextDark = HexColor("#F4B575");
   static Color warningTextLight = HexColor("#F88105");
   // Brand colors
-  static Color primary = HexColor("#CC0001");
+  static Color primary = HexColor("#CC0100");
   static Color brandSecondary = HexColor("#FD862A");
   static Color brandGreen = HexColor("#36B37E");
   // Random colors

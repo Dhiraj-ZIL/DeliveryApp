@@ -86,7 +86,7 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
                           ? Icon(Icons.check_circle,
                               color: AppColors.primary, size: 18)
                           : Icon(Icons.location_on,
-                              color: Colors.red, size: 20),
+                              color: AppColors.primary, size: 20),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Column(
@@ -111,7 +111,7 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40.sp),
+                  SizedBox(height: 20.sp),
 
                   // Action Button
                   SizedBox(
@@ -119,12 +119,14 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: _isMarkedAsDestinationReached == true
-                            ? AppColors.primary
+                            ? _markingAsDelivered == true
+                                ? AppColors.primary.withValues(alpha: 0.6)
+                                : AppColors.primary
                             : AppColors.brandSecondary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       onPressed: () {
                         if (_markingAsDelivered == true) return;

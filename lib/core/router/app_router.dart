@@ -5,6 +5,7 @@ import 'package:flashquiz_app/features/bottom_nav/bottom_nav_page.dart';
 import 'package:flashquiz_app/features/home/home_page.dart';
 import 'package:flashquiz_app/features/order/delivery_success/delivery_success_page.dart';
 import 'package:flashquiz_app/features/order/order_detail/order_detail_page.dart';
+import 'package:flashquiz_app/features/order/order_history/order_history.dart';
 import 'package:flashquiz_app/features/order/order_page.dart';
 import 'package:flashquiz_app/features/order/order_track_map/order_track_map.dart';
 import 'package:flashquiz_app/features/profile/profile_page.dart';
@@ -27,6 +28,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: OrderDetailsRoute.page),
         AutoRoute(page: OrderTrackMapRoute.page),
         AutoRoute(page: DeliveryCompleteRoute.page),
+        AutoRoute(page: EmptyOrderRoute.page),
+        AutoRoute(page: OrderHistoryRoute.page),
+
         // AutoRoute(page: AuthWrapperRoute.page, children: [
         //   AutoRoute(page: HomeRoute.page),
         //   AutoRoute(page: OrdersRoute.page),
@@ -43,7 +47,7 @@ class AppRouter extends _$AppRouter {
               page: AuthWrapperRoute.page,
             ),
             AutoRoute(page: HomeRoute.page),
-            AutoRoute(page: OrdersRoute.page),
+            AutoRoute(page: OrderHistoryRoute.page),
             AutoRoute(
               page: ProfileRoute.page,
             ),

@@ -81,6 +81,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrdersPage(),
       );
     },
+    OrderHistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrderHistoryPage(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -223,6 +229,20 @@ class OrderDetailsRoute extends PageRouteInfo<OrderDetailsRouteArgs> {
       PageInfo<OrderDetailsRouteArgs>(name);
 }
 
+/// generated route for
+/// [OrderHistoryPage]
+class OrderHistoryRoute extends PageRouteInfo<void> {
+  const OrderHistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderHistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderHistoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
 class OrderDetailsRouteArgs {
   const OrderDetailsRouteArgs({
     this.key,
@@ -259,6 +279,18 @@ class OrderTrackMapRoute extends PageRouteInfo<OrderTrackMapRouteArgs> {
 
   static const PageInfo<OrderTrackMapRouteArgs> page =
       PageInfo<OrderTrackMapRouteArgs>(name);
+}
+
+class EmptyOrderRoute extends PageRouteInfo<void> {
+  const EmptyOrderRoute({List<PageRouteInfo>? children})
+      : super(
+          EmptyOrderRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EmptyOrderRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 class OrderTrackMapRouteArgs {

@@ -62,7 +62,7 @@ dependencies:
   # flutter_secure_storage: ^4.2.1
   json_annotation: ^4.9.0
   shimmer: ^3.0.0
-  intl: ^0.19.0
+  intl: ^0.20.2
   cached_network_image: ^3.4.1
   hexcolor: ^3.0.1
   pop_scope_aware_cupertino_route: ^0.0.4

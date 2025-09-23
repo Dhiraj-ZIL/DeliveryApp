@@ -14,6 +14,7 @@ export 'src/widgets/animation_builder.dart';
 export 'src/widgets/custom_button.dart';
 export 'src/widgets/custom_text_field.dart';
 export 'src/widgets/action_tile.dart';
+export 'src/widgets/app_svg.dart';
 
 //extensions
 export 'src/extensions/string.dart';

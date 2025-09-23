@@ -15,7 +15,7 @@ class BottomNavPage extends StatefulWidget {
 class _BottomNavPageState extends State<BottomNavPage> {
   final List<PageRouteInfo> _routes = [
     const HomeRoute(),
-    const OrdersRoute(),
+    const OrderHistoryRoute(),
     const ShipmentRoute(),
     const ProfileRoute(),
   ];

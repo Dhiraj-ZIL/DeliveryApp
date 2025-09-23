@@ -3,6 +3,7 @@ import 'package:flashquiz_app/core/models/order_model.dart';
 import 'package:flashquiz_app/core/router/app_router.dart';
 import 'package:flashquiz_app/core/ui/colors/app_colors.dart';
 import 'package:flashquiz_app/core/widgets/dot_center_widget.dart';
+import 'package:flashquiz_app/features/order/order_track_map/verify_otp_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,6 +20,17 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
   bool? _isMarkedAsPickup;
   bool? _isMarkedAsDestinationReached;
   bool? _markingAsDelivered;
+  bool? _isOTPVerified;
+
+  Future<void> showOtpPopUp(BuildContext context) async {
+    await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+              backgroundColor: Colors.white,
+              content: VerifyOTPWidget(otp: ""),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +43,7 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
           Container(
             height: 4,
             width: 40,
-            margin: const EdgeInsets.only(top: 8, bottom: 16),
+            margin: EdgeInsets.only(top: 8, bottom: 16),
             decoration: BoxDecoration(
               color: Colors.grey[300],
               borderRadius: BorderRadius.circular(2),
@@ -128,12 +140,15 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_markingAsDelivered == true) return;
                         if (_isMarkedAsPickup != true) {
                           setState(() => _isMarkedAsPickup = true);
                         } else if (_isMarkedAsDestinationReached != true) {
                           setState(() => _isMarkedAsDestinationReached = true);
+                        } else if (_isOTPVerified != true) {
+                          await showOtpPopUp(context);
+                          setState(() => _isOTPVerified = true);
                         } else {
                           setState(() => _markingAsDelivered = true);
                           Future.delayed(const Duration(seconds: 1), () {
@@ -148,7 +163,9 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
                                 ? "Mark as Picked Up"
                                 : _isMarkedAsDestinationReached != true
                                     ? "Mark as Destination Reached"
-                                    : "Mark as Delivered",
+                                    : _isOTPVerified != true
+                                        ? "Verify OTP"
+                                        : "Mark as Delivered",
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -163,3 +180,47 @@ class _OrderBottomSheetState extends State<OrderBottomSheet> {
     );
   }
 }
+
+// class VerifyOTPWidget extends StatelessWidget {
+//   const VerifyOTPWidget({super.key, required this.otp});
+//   final String otp;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: Container(
+//           width: 390,
+//           height: 384,
+//           decoration: BoxDecoration(
+//             color: Colors.white,
+//             borderRadius: BorderRadius.circular(20),
+//           ),
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.start,
+//             children: [
+//               Positioned(
+//                 top: 24,
+//                 left: 149,
+//                 height: 92,
+//                 width: 92,
+//                 child: SvgPicture.string(
+//                   AppSvg.verifySvg,
+//                 ),
+//               ),
+//               Positioned(
+//                 top: 24,
+//                 left: 149,
+//                 height: 92,
+//                 width: 92,
+//                 child: SvgPicture.string(
+//                   AppSvg.verifySvg,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
